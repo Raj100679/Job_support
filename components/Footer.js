@@ -19,6 +19,7 @@ const Footer = () => {
         bgcolor: "#1e1e1e", // Dark background
         color: "#f5f5f5", // Light text
         width: "100%", // Full viewport width
+        mt:10,
         py: 4,
         px: 4,
         boxSizing: "border-box",
