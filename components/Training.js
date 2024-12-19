@@ -1,10 +1,18 @@
-import React from 'react';
-import { Grid, Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
+import React from "react";
+import {
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  Box,
+} from "@mui/material";
 
 const trainings = [
   {
     id: 1,
-    image: "/azure.png", // Replace with actual image paths
+    image: "/azure.png",
     date: "Dec 2024",
     instructor: "Rahul Charla",
     description:
@@ -12,70 +20,79 @@ const trainings = [
   },
   {
     id: 2,
-    image: "/aws.png", // Replace with actual image paths
+    image: "/aws.png",
     date: "Jan 2025",
     instructor: "Priya Sharma",
     description:
       "We are planning to start training for Azure Data Engineering Course. Those who are interested, please register.",
   },
+  {
+    id: 3,
+    image: "/gcp.png",
+    date: "Feb 2025",
+    instructor: "Amit Kulkarni",
+    description:
+      "We are planning to start Google Cloud Training. Those who are interested, please register.",
+  },
 ];
 
 const TrainingCards = () => {
   return (
-    <Box sx={{ maxWidth: 800, mx: "auto", my: 6, textAlign: "center" }}>
+    <Box sx={{ maxWidth: 1200, mx: "auto", my: 6, textAlign: "center" }}>
       {/* Heading */}
       <Typography
         variant="h4"
         sx={{
-          color: "#90caf9", // Soft light blue color related to carousel theme
-          fontFamily: "'Roboto', sans-serif", // Consistent font family
+          color: "#90caf9",
+          fontFamily: "'Roboto', sans-serif",
           fontWeight: 500,
-          mb: 4, // Margin below the heading
+          mb: 4,
         }}
       >
         Upcoming Training Batches
       </Typography>
-      
+
       <Typography
         variant="body1"
         sx={{
-          color: "#cccccc", // Light gray description text
+          color: "#cccccc",
           fontStyle: "italic",
           maxWidth: 800,
-          mx: "auto", // Centered text
+          mx: "auto",
           mb: 4,
         }}
       >
-        We are planning to start training batches in upcoming months. Stay tuned for more details on these exciting opportunities!
+        We are planning to start training batches in upcoming months. Stay tuned
+        for more details on these exciting opportunities!
       </Typography>
 
       {/* Training Cards */}
       <Grid container spacing={4}>
         {trainings.map((training) => (
-          <Grid item xs={12} md={6} key={training.id}>
+          <Grid item xs={12} sm={6} md={4} key={training.id}>
             <Card
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                height: "100%",
-                bgcolor: "#2c2c2c", // Dark background similar to carousel slides
-                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.5)", // Dark shadow for depth
+                bgcolor: "#2c2c2c",
+                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.5)",
                 borderRadius: 3,
-                overflow: "hidden", // To prevent any image overflow
+                overflow: "hidden",
+                height:400,
               }}
             >
               <CardMedia
-  component="img"
-  image={training.image}
-  alt={training.instructor}
-  sx={{
-    objectFit: "cover",  // Maintain the aspect ratio of the image
-    width: "100%",       // Ensure it fills the full width
-    height: 160,         // Fixed height for consistent display
-    borderBottom: "1px solid #444", // Slight border for separation
-  }}
-/>
+                component="img"
+                image={training.image}
+                alt={training.instructor}
+                sx={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: 160,
+                  borderBottom: "1px solid #444",
+                }}
+              />
               <CardContent sx={{ p: 3, textAlign: "left" }}>
                 <Typography
                   variant="h6"

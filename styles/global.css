@@ -1,0 +1,13 @@
+/* styles/globals.css */
+.slick-prev:before,
+.slick-next:before {
+  color: #90caf9; /* Arrow color */
+}
+
+.slick-dots li button:before {
+  color: #90caf9; /* Dots color */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ffffff; /* Active dot color */
+}
