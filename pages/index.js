@@ -20,7 +20,6 @@ export default function Home() {
       </Head>
       <Navbar />
       <HeroSection id="home" /> {/* Add id for smooth scrolling */}
-      <section id="about"></section>
       <section id="job-support">
         <Typography
           variant="h4"
@@ -29,7 +28,9 @@ export default function Home() {
         >
           Our Job Support Technologies
         </Typography>
-        <JobCarousel />
+        <section id="about">
+          <JobCarousel />
+        </section>
       </section>
       <AboutUs id="about" />
       <section id="trainings">

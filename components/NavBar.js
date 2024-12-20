@@ -20,46 +20,36 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Check if screen size is mobile
 
+  // Function to scroll to a section with smooth scrolling after a delay
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling
-    }
+    // Set a 1-second (1000ms) delay before performing the scroll action
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 10); // 1000ms delay
   };
 
+
+
+  // Menu items for navigation
   const menuItems = [
     { label: "Home", id: "home" },
     { label: "About", id: "about" },
     { label: "Job Support", id: "job-support" },
     { label: "Trainings", id: "trainings" },
     { label: "Reviews", id: "reviews" },
-    { label: "Work With Us?", id: "work-with-us" },
     { label: "Contact", id: "contact" },
   ];
 
   return (
     <>
-      <AppBar
-        position="relative"
-        sx={{
-          backgroundColor: "#000000", // Set background color to black
-        }}
-      >
-        <Toolbar
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            height: 100,
-          }}
-        >
+      <AppBar position="relative" sx={{ backgroundColor: "#000000" }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: 100 }}>
           {/* Logo Image */}
           <IconButton>
-            <img
-              src="/logo_2.png"
-              alt="Logo"
-              style={{ height: 100, width: 100 }}
-            />
+            <img src="/logo_2.png" alt="Logo" style={{ height: 100, width: 100 }} />
           </IconButton>
 
           {/* Mobile Menu */}
@@ -69,33 +59,20 @@ const Navbar = () => {
                 edge="end"
                 color="inherit"
                 onClick={() => setDrawerOpen(true)}
-                sx={{
-                  color: "#90caf9",
-                }}
+                sx={{ color: "#90caf9" }}
               >
                 <MenuIcon />
               </IconButton>
-              <Drawer
-                anchor="right"
-                open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
-              >
-                <Box
-                  sx={{
-                    width: 250,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    mt: 2,
-                  }}
-                >
+              <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                <Box sx={{ width: 250, display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
                   <List>
                     {menuItems.map((item) => (
                       <ListItem key={item.id} disablePadding>
                         <ListItemButton
                           onClick={() => {
+                    
                             scrollToSection(item.id);
-                            setDrawerOpen(false); // Close drawer on selection
+                           
                           }}
                         >
                           <ListItemText
@@ -115,12 +92,12 @@ const Navbar = () => {
               </Drawer>
             </>
           ) : (
-            // Desktop Buttons Section
+            // Desktop Menu
             <Box sx={{ display: "flex", gap: 2 }}>
               {menuItems.map((item) => (
                 <Button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => scrollToSection(item.id)} // Scroll to section with delay
                   sx={{
                     color: "#90caf9",
                     fontWeight: 700,
