@@ -7,9 +7,12 @@ import {
   Box,
   CardMedia,
   Button,
+  useTheme,
 } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+// Job data
 const jobs = [
   {
     id: 1,
@@ -162,120 +165,167 @@ const jobs = [
 ];
 
 const JobCarousel = () => {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 1500,
-      slidesToShow: 5, // Show 5 cards on larger screens
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      arrows: true,
-      responsive: [
-        {
-          breakpoint: 1024, // Tablet
-          settings: {
-            slidesToShow: 3, // Show 3 cards on tablet
-            slidesToScroll: 1,
-          },
+  const theme = useTheme();
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1500,
+    slidesToShow: 5, // Show 5 cards on larger screens
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablet
+        settings: {
+          slidesToShow: 3, // Show 3 cards on tablet
+          slidesToScroll: 1,
         },
-        {
-          breakpoint: 600, // Mobile
-          settings: {
-            slidesToShow: 1, // Show 1 card on mobile
-            slidesToScroll: 1,
-          },
+      },
+      {
+        breakpoint: 600, // Mobile
+        settings: {
+          slidesToShow: 1, // Show 1 card on mobile
+          slidesToScroll: 1,
         },
-      ],
-    };
-  
-    // WhatsApp phone number (replace with your own number, include country code without "+")
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER; // Example phone number
-    const message = "Hello! I'm interested in learning more about your job support technology."; // Pre-filled message
-  
-    // WhatsApp URL for chat
-    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-  
-    return (
-      <Box sx={{ my: 6, mx: "auto", maxWidth: "90%" }}>
-        <Slider {...settings}>
-          {jobs.map((job) => (
-            <Card
-              key={job.id}
+      },
+    ],
+  };
+
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER; // Replace with your number
+  const message =
+    "Hello! I'm interested in learning more about your job support technology.";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+
+  return (
+    <Box
+      sx={{
+        my: 6,
+        mx: "auto",
+        maxWidth: "90%",
+        [theme.breakpoints.down("sm")]: {
+          maxWidth: "100%",
+        },
+      }}
+    >
+      <Slider {...settings}>
+        {jobs.map((job) => (
+          <Card
+            key={job.id}
+            sx={{
+              bgcolor: "#1e1e1e",
+              color: "white",
+              borderRadius: 2,
+              mx: 1,
+              textAlign: "center",
+              overflow: "hidden",
+              maxWidth: 240,
+              height: 350,
+              display: "flex",
+              flexDirection: "column",
+              position: "relative",
+              [theme.breakpoints.down("sm")]: {
+                maxWidth: "90%", // Adjust card width on mobile
+                height: 300, // Reduce height for smaller screens
+              },
+            }}
+          >
+            <CardMedia
+              component="img"
+              image={job.image}
+              alt={job.title}
               sx={{
-                bgcolor: "#1e1e1e",
-                color: "white",
-                borderRadius: 2,
-                mx: 1,
-                textAlign: "center",
-                overflow: "hidden",
-                maxWidth: 240,
-                height: 350,
+                width: "100%",
+                height: 120,
+                objectFit: "cover",
+                [theme.breakpoints.down("sm")]: {
+                  height: 100, // Smaller image on mobile
+                },
+              }}
+            />
+            <CardContent
+              sx={{
                 display: "flex",
                 flexDirection: "column",
-                position: "relative", // Make the card a positioned container
+                justifyContent: "space-between",
+                flexGrow: 1,
+                p: 2,
+                [theme.breakpoints.down("sm")]: {
+                  p: 1, // Reduce padding for smaller screens
+                },
               }}
             >
-              <CardMedia
-                component="img"
-                image={job.image}
-                alt={job.title}
+              <Typography
+                variant="h6"
                 sx={{
-                  width: "100%",
-                  height: 120,
-                  objectFit: "cover",
+                  fontSize: "1rem",
+                  [theme.breakpoints.down("sm")]: {
+                    fontSize: "0.9rem", // Smaller font size on mobile
+                  },
                 }}
-              />
-              <CardContent
+                gutterBottom
+              >
+                {job.title}
+              </Typography>
+              <Typography
+                variant="body2"
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
+                  mb: 1,
+                  color: "#b0bec5",
                   flexGrow: 1,
-                  p: 2,
+                  fontSize: "0.85rem",
+                  [theme.breakpoints.down("sm")]: {
+                    fontSize: "0.75rem", // Smaller description text
+                  },
                 }}
               >
-                <Typography variant="h6" sx={{ fontSize: "1rem" }} gutterBottom>
-                  {job.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ mb: 1, color: "#b0bec5", flexGrow: 1, fontSize: "0.85rem" }}
-                >
-                  {job.description}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#90caf9", mb: 2, fontSize: "0.75rem" }}
-                >
-                  Key Skills: {job.skills}
-                </Typography>
-              </CardContent>
-              <Box
+                {job.description}
+              </Typography>
+              <Typography
+                variant="caption"
                 sx={{
-                  position: "absolute",  // Absolutely position the button
-                  bottom: 0,             // Align the button at the bottom of the card
-                  left: 0,
-                  right: 0,
-                  p: 2,
+                  color: "#90caf9",
+                  mb: 2,
+                  fontSize: "0.75rem",
+                  [theme.breakpoints.down("sm")]: {
+                    fontSize: "0.65rem", // Smaller key skills text
+                  },
                 }}
               >
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  fullWidth
-                  size="small"
-                  onClick={() => window.open(whatsappLink, "_blank")}
-                >
-                  Connect with us
-                </Button>
-              </Box>
-            </Card>
-          ))}
-        </Slider>
-      </Box>
-    );
-  };
-  
-  export default JobCarousel;
+                Key Skills: {job.skills}
+              </Typography>
+            </CardContent>
+            <Box
+              sx={{
+                position: "absolute", // Absolutely position the button
+                bottom: 0, // Align the button at the bottom of the card
+                left: 0,
+                right: 0,
+                p: 2,
+                [theme.breakpoints.down("sm")]: {
+                  p: 1, // Reduce padding for mobile
+                },
+              }}
+            >
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                size="small"
+                onClick={() => window.open(whatsappLink, "_blank")}
+              >
+                Connect with us
+              </Button>
+            </Box>
+          </Card>
+        ))}
+      </Slider>
+    </Box>
+  );
+};
 
+export default JobCarousel;

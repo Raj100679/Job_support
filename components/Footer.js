@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Box, Typography, Grid, IconButton, Divider,Link } from "@mui/material";
+import { Box, Typography, Grid, IconButton, Divider, Link } from "@mui/material";
 import {
   Facebook,
   Twitter,
@@ -19,7 +19,7 @@ const Footer = () => {
         bgcolor: "#1e1e1e", // Dark background
         color: "#f5f5f5", // Light text
         width: "100%", // Full viewport width
-        mt:10,
+        mt: 10,
         py: 4,
         px: 4,
         boxSizing: "border-box",
@@ -29,51 +29,40 @@ const Footer = () => {
       <Box
         sx={{
           display: "flex",
+          overflow: "hidden",
           justifyContent: "space-between",
           alignItems: "center",
           px: { xs: 2, md: 8 },
           pb: 3,
           width: "100%", // Ensure full width
           boxSizing: "border-box", // Include padding in width
+          flexDirection: { xs: "column", md: "row" }, // Stack on small screens
+          gap: { xs: 2, md: 0 }, // Space out social icons on mobile
         }}
       >
-        <Typography variant="body1" sx={{ fontSize: "1rem", fontWeight: 600 }}>
+        <Typography variant="body1" sx={{ fontSize: "1rem", fontWeight: 600, textAlign: { xs: "center", md: "left" } }}>
           Get connected with us on social networks:
         </Typography>
-        <Box>
-          <IconButton
-            component="a"
-            href="#"
-            sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}
-          >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: { xs: "center", md: "flex-start" },
+            gap: 1,
+          }}
+        >
+          <IconButton component="a" href="#" sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}>
             <Facebook />
           </IconButton>
-          <IconButton
-            component="a"
-            href="#"
-            sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}
-          >
+          <IconButton component="a" href="#" sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}>
             <Twitter />
           </IconButton>
-          <IconButton
-            component="a"
-            href="#"
-            sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}
-          >
+          <IconButton component="a" href="#" sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}>
             <LinkedIn />
           </IconButton>
-          <IconButton
-            component="a"
-            href="#"
-            sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}
-          >
+          <IconButton component="a" href="#" sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}>
             <Instagram />
           </IconButton>
-          <IconButton
-            component="a"
-            href="#"
-            sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}
-          >
+          <IconButton component="a" href="#" sx={{ color: "#000", bgcolor: "#fff", mx: 0.5 }}>
             <YouTube />
           </IconButton>
         </Box>
@@ -102,7 +91,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
-            sx={{ textAlign: { xs: "center", md: "left" } }}
+            sx={{ textAlign: { xs: "center", md: "left" }, mb: { xs: 4, md: 0 } }}
           >
             <Typography
               variant="h6"
@@ -127,7 +116,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
-            sx={{ textAlign: { xs: "center", md: "left" } }}
+            sx={{ textAlign: { xs: "center", md: "left" }, mb: { xs: 4, md: 0 } }}
           >
             <Typography
               variant="h6"
@@ -192,7 +181,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
-            sx={{ textAlign: { xs: "center", md: "left" } }}
+            sx={{ textAlign: { xs: "center", md: "left" }, mb: { xs: 4, md: 0 } }}
           >
             <Typography
               variant="h6"
@@ -257,7 +246,7 @@ const Footer = () => {
             xs={12}
             sm={6}
             md={3}
-            sx={{ textAlign: { xs: "center", md: "left" } }}
+            sx={{ textAlign: { xs: "center", md: "left" }, mb: { xs: 4, md: 0 } }}
           >
             <Typography
               variant="h6"

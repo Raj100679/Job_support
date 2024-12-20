@@ -1,25 +1,46 @@
-import { useState } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+/** @jsxImportSource @emotion/react */
+import { useState, useEffect } from "react";
+import { Box, Typography, useTheme } from "@mui/material";
+import { keyframes } from "@emotion/react";
+
+const slideAnimation = keyframes`
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  15% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+`;
 
 const HeroSection = () => {
   const titles = ["IT JOB SUPPORT", "TRAINING CENTER", "INTERVIEW SUPPORT"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % titles.length);
-  };
+  const theme = useTheme(); // Access Material-UI's theme for responsive breakpoints
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + titles.length) % titles.length);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % titles.length);
+    }, 4000); // Change title every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [titles.length]);
 
   return (
     <Box
       sx={{
         position: "relative",
-        height: "85vh",
+        height: "70vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -29,6 +50,10 @@ const HeroSection = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        overflow: "hidden", // Hide text outside bounds
+        [theme.breakpoints.down("sm")]: {
+          height: "50vh", // Reduce height on small screens
+        },
       }}
     >
       {/* Overlay for better text visibility */}
@@ -43,53 +68,29 @@ const HeroSection = () => {
         }}
       ></Box>
 
-      {/* Title and Arrows */}
-      <Box sx={{ position: "relative", zIndex: 1 }}>
-        <Typography
-          variant="h3"
-          sx={{
-            mb: 4,
-            fontFamily: "Roboto, sans-serif",
-            fontWeight: 700,
-            //letterSpacing: "0.1em",
-            color: "#f1f1f1",
-          }}
-        >
-          {titles[currentIndex]}
-        </Typography>
-
-        {/* Navigation Buttons */}
-        <Box sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
-          <IconButton
-            onClick={handlePrev}
-            sx={{
-              color: "white",
-              backgroundColor: "rgba(255, 255, 255, 0.2)",
-              p: 1,
-              borderRadius: "50%",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)",
-              "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.4)" },
-              transition: "background-color 0.3s ease",
-            }}
-          >
-            <ArrowBackIosNewIcon sx={{ fontSize: 24 }} />
-          </IconButton>
-          <IconButton
-            onClick={handleNext}
-            sx={{
-              color: "white",
-              backgroundColor: "rgba(255, 255, 255, 0.2)",
-              p: 1,
-              borderRadius: "50%",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)",
-              "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.4)" },
-              transition: "background-color 0.3s ease",
-            }}
-          >
-            <ArrowForwardIosIcon sx={{ fontSize: 24 }} />
-          </IconButton>
-        </Box>
-      </Box>
+      {/* Animated Title */}
+      <Typography
+        variant="h3"
+        sx={{
+          mb: 4,
+          fontFamily: "Roboto, sans-serif",
+          fontWeight: 700,
+          color: "#f1f1f1",
+          position: "relative",
+          display: "inline-block",
+          whiteSpace: "nowrap",
+          animation: `${slideAnimation} 4s ease-in-out infinite`,
+          fontSize: "3rem", // Default font size
+          [theme.breakpoints.down("md")]: {
+            fontSize: "2rem", // Adjust font size for medium screens
+          },
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "1.5rem", // Smaller font size for small screens
+          },
+        }}
+      >
+        {titles[currentIndex]}
+      </Typography>
     </Box>
   );
 };

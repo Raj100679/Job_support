@@ -11,3 +11,21 @@
 .slick-dots li.slick-active button:before {
   color: #ffffff; /* Active dot color */
 }
+
+html, body {
+  height: 100%;  /* Ensure full height for body and html */
+  margin: 0;     /* Remove default margin */
+  padding: 0;    /* Remove default padding */
+  overflow-x: hidden;  /* Disable horizontal scroll */
+  width: 100%;   /* Ensure full width */
+}
+
+/* Hide scrollbars without affecting layout */
+* {
+  -ms-overflow-style: none;  /* For IE and Edge */
+  scrollbar-width: none;      /* For Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}

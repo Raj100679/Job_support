@@ -8,7 +8,7 @@ import { Box, Typography, Avatar } from '@mui/material';
 
 const reviews = [
   {
-    name: "Jone Moe",
+    name: "Harvy",
     review: "I’m thoroughly impressed with the level of support I received. The team was not only quick to respond but also highly knowledgeable, providing a solution to my problem in record time. They took the time to understand my concerns and made sure everything was working perfectly before closing the ticket. Their professionalism and attention to detail really set them apart. I couldn't have asked for better service, and I will definitely rely on their tech support for any future issues",
     avatar: "/images/avatar1.jpg",
   },

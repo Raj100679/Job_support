@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Grid,
   Card,
@@ -7,7 +7,9 @@ import {
   Typography,
   Button,
   Box,
+  IconButton,
 } from "@mui/material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Arrow icons
 
 const trainings = [
   {
@@ -37,6 +39,19 @@ const trainings = [
 ];
 
 const TrainingCards = () => {
+  const scrollContainerRef = useRef(null);
+
+  // Function to scroll the container
+  const handleScroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === "left" ? -500 : 500;
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <Box sx={{ maxWidth: 1200, mx: "auto", my: 6, textAlign: "center" }}>
       {/* Heading */}
@@ -66,68 +81,114 @@ const TrainingCards = () => {
         for more details on these exciting opportunities!
       </Typography>
 
-      {/* Training Cards */}
-      <Grid container spacing={4}>
+      {/* Scrollable Container */}
+      <Box
+        ref={scrollContainerRef}
+        sx={{
+          display: "flex",
+          overflowX: "auto", // Enable horizontal scrolling
+          flexWrap: "nowrap", // Keep cards in a single row
+          gap: 13, // Increased gap between cards
+          "&::-webkit-scrollbar": {
+            display: "none", // Hide scrollbar
+          },
+          justifyContent: "flex-start", // Align items to the left
+          mb: 2,
+          mx: 1,
+        }}
+      >
         {trainings.map((training) => (
-          <Grid item xs={12} sm={6} md={4} key={training.id}>
-            <Card
+          <Card
+            key={training.id}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              bgcolor: "#2c2c2c",
+              boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.5)",
+              borderRadius: 2,
+              overflow: "hidden",
+              width: { xs: "100%", sm: 300 }, // 100% width on mobile and fixed width on desktop
+              flexShrink: 0, // Prevent cards from shrinking
+              height: 400,
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.05)",
+                boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.7)",
+              },
+            }}
+          >
+            <CardMedia
+              component="img"
+              image={training.image}
+              alt={training.instructor}
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                bgcolor: "#2c2c2c",
-                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.5)",
-                borderRadius: 3,
-                overflow: "hidden",
-                height:400,
+                objectFit: "cover",
+                width: "100%",
+                height: 160,
+                borderBottom: "1px solid #444",
               }}
-            >
-              <CardMedia
-                component="img"
-                image={training.image}
-                alt={training.instructor}
-                sx={{
-                  objectFit: "cover",
-                  width: "100%",
-                  height: 160,
-                  borderBottom: "1px solid #444",
-                }}
-              />
-              <CardContent sx={{ p: 3, textAlign: "left" }}>
-                <Typography
-                  variant="h6"
-                  color="primary"
-                  sx={{ fontWeight: "bold", mb: 1 }}
-                >
-                  {training.date}
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  color="text.primary"
-                  sx={{ fontWeight: "medium", mb: 1 }}
-                >
-                  {training.instructor}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mb: 2 }}
-                >
-                  {training.description}
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  sx={{ mt: 2, borderRadius: 2 }}
-                >
-                  Register
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
+            />
+            <CardContent sx={{ p: 3, textAlign: "left" }}>
+              <Typography
+                variant="h6"
+                color="primary"
+                sx={{ fontWeight: "bold", mb: 1 }}
+              >
+                {training.date}
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                color="text.primary"
+                sx={{ fontWeight: "medium", mb: 1 }}
+              >
+                {training.instructor}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                {training.description}
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                sx={{ mt: 2, borderRadius: 2 }}
+              >
+                Register
+              </Button>
+            </CardContent>
+          </Card>
         ))}
-      </Grid>
+      </Box>
+
+      {/* Arrows for Mobile Scrolling */}
+      <Box
+        sx={{
+          display: { xs: "flex", sm: "none" }, // Arrows only visible on mobile
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <IconButton
+          onClick={() => handleScroll("left")}
+          sx={{
+            color: "#90caf9",
+            bgcolor: "transparent",
+            "&:hover": { bgcolor: "transparent" },
+          }}
+        >
+          <ChevronLeft />
+        </IconButton>
+        <IconButton
+          onClick={() => handleScroll("right")}
+          sx={{
+            color: "#90caf9",
+            bgcolor: "transparent",
+            "&:hover": { bgcolor: "transparent" },
+          }}
+        >
+          <ChevronRight />
+        </IconButton>
+      </Box>
     </Box>
   );
 };

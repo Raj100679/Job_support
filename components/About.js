@@ -6,11 +6,15 @@ const AboutUs = () => {
     <Box
       id="about-us"
       sx={{
-        //backgroundColor: "#1e1e1e",
-        my: 10,
+        my: 2,
         py: 6,
         px: 3,
         textAlign: "center",
+        // Use media queries to adjust padding and margins for responsiveness
+        "@media (max-width:600px)": {
+          py: 4, // Adjust padding for smaller screens
+          px: 2, // Reduce horizontal padding on mobile
+        },
       }}
     >
       <Typography
@@ -20,6 +24,7 @@ const AboutUs = () => {
           fontWeight: 700,
           color: "#90caf9",
           mb: 2,
+          fontSize: { xs: "1.5rem", sm: "2rem" }, // Adjust font size for mobile
         }}
       >
         About Us
@@ -28,11 +33,14 @@ const AboutUs = () => {
         variant="body1"
         sx={{
           fontFamily: "Roboto, sans-serif",
-          fontSize: 18,
+          fontSize: { xs: "1rem", sm: "1.125rem" }, // Adjust font size for mobile
           lineHeight: 1.6,
-          //color: "#555",
           maxWidth: 800,
           mx: "auto",
+          // Reduce max width for smaller screens
+          "@media (max-width:600px)": {
+            maxWidth: "100%", // Allow text to take full width on mobile
+          },
         }}
       >
         If you're a newcomer to a particular technology or even an experienced

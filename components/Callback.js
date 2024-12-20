@@ -70,7 +70,7 @@ const RequestCallback = () => {
         my: 4, // Margin top and bottom
         p: 3,
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", sm: "row" }, // Stack on mobile, side-by-side on larger screens
         gap: 3,
         bgcolor: "#1e1e1e", // Dark background
         color: "#f5f5f5", // Light text color
@@ -81,7 +81,7 @@ const RequestCallback = () => {
       <Paper
         elevation={4}
         sx={{
-          flex: 3,
+          flex: { xs: 1, sm: 3 },
           p: 4,
           borderRadius: 2,
           bgcolor: "#1e1e1e", // Darker background for the form
@@ -90,7 +90,13 @@ const RequestCallback = () => {
       >
         <Typography
           variant="h5"
-          sx={{ fontWeight: "bold", mb: 3, textAlign: "center", color: "#90caf9" }} // Primary blue for heading
+          sx={{
+            fontWeight: "bold",
+            mb: 3,
+            textAlign: "center",
+            color: "#90caf9",
+            fontSize: { xs: "h6", sm: "h5" }, // Adjust font size for smaller screens
+          }}
         >
           Request a Call Back
         </Typography>
@@ -197,7 +203,7 @@ const RequestCallback = () => {
       {/* Points Section */}
       <Box
         sx={{
-          flex: 2,
+          flex: { xs: 1, sm: 2 },
           p: 3,
           bgcolor: "#1e1e1e", // Matching the form background
           borderRadius: 2,
@@ -208,21 +214,26 @@ const RequestCallback = () => {
       >
         <Typography
           variant="h6"
-          sx={{ fontWeight: "bold", textAlign: "align-left", color: "#90caf9" }}
+          sx={{
+            fontWeight: "bold",
+            textAlign: "left",
+            color: "#90caf9",
+            fontSize: { xs: "h6", sm: "h5" },
+          }}
         >
           Why Choose Us?
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  Upon receiving your inquiry, we will organize a call with one of our consultants, where you can share the details of your project. 
+          ✅  Upon receiving your inquiry, we will organize a call with one of our consultants, where you can share the details of your project.
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  If you feel assured and at ease with the consultant, you can proceed with the engagement. 
+          ✅  If you feel assured and at ease with the consultant, you can proceed with the engagement.
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  For any questions about our online technical job support, you can contact us at 917416255951. 
+          ✅  For any questions about our online technical job support, you can contact us at 917416255951.
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  Our usual working hours are Monday to Friday, but if needed, weekend support can be arranged based on the consultant's availability and your project deadlines. 
+          ✅  Our usual working hours are Monday to Friday, but if needed, weekend support can be arranged based on the consultant's availability and your project deadlines.
         </Typography>
       </Box>
     </Box>
