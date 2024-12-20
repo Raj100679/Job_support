@@ -267,7 +267,7 @@ const JobCarousel = () => {
                   size="small"
                   onClick={() => window.open(whatsappLink, "_blank")}
                 >
-                  Chat with us!
+                  Connect with us
                 </Button>
               </Box>
             </Card>

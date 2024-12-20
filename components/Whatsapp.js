@@ -56,7 +56,7 @@ const FloatingWhatsapp = () => {
           textAlign: 'center', // Ensure text is centered
         }}
       >
-        Chat with us?
+        Connect with us?
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import RequestCallback from "../components/Callback";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import JobCarousel from "../components/JobCarousel";
+import HeroSection from "../components/Hero";
+import AboutUs from "../components/About";
 
 export default function Home() {
   return (
@@ -15,18 +17,36 @@ export default function Home() {
         <title>Job Support</title>
       </Head>
       <Navbar />
-      <Typography
-        variant="h4"
-        align="center"
-        sx={{ mb: 4, color: "#90caf9", fontWeight: "bold",mt:7 }}
-      >
-        Our Job Support Technologies
-      </Typography>
-      <JobCarousel/>
-      <TrainingCards />
-      <Carousel />
-      <RequestCallback />
-      <Footer />
+      <HeroSection id="home" /> {/* Add id for smooth scrolling */}
+      <section id="about">
+      <AboutUs id="about" />
+      </section>
+      
+      
+      <section id="job-support">
+        <Typography
+          variant="h4"
+          align="center"
+          sx={{ mb: 4, color: "#90caf9", fontWeight: "bold", mt: 7 }}
+        >
+          Our Job Support Technologies
+        </Typography>
+        <JobCarousel />
+      </section>
+
+      <section id="trainings">
+        <TrainingCards />
+      </section>
+
+      <section id="reviews">
+        <Carousel />
+      </section>
+
+      <section id="contact">
+        <RequestCallback />
+      </section>
+
+      <Footer id="footer" />
     </>
   );
 }
