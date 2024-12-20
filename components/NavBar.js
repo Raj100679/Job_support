@@ -36,8 +36,9 @@ const Navbar = () => {
   // Menu items for navigation
   const menuItems = [
     { label: "Home", id: "home" },
-    { label: "About", id: "about" },
+   
     { label: "Job Support", id: "job-support" },
+    { label: "About", id: "about" },
     { label: "Trainings", id: "trainings" },
     { label: "Reviews", id: "reviews" },
     { label: "Contact", id: "contact" },

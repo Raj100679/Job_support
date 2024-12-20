@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Carousel from "../components/Carousel";
 import { CssBaseline, Container, Typography } from "@mui/material";
 import TrainingCards from "../components/Training";
+import CardGrid from "../components/StatsSection";
 import RequestCallback from "../components/Callback";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
@@ -28,11 +29,16 @@ export default function Home() {
         >
           Our Job Support Technologies
         </Typography>
-        <section id="about">
+        <section id="job-support">
           <JobCarousel />
         </section>
       </section>
-      <AboutUs id="about" />
+      <section id="about">
+        <AboutUs id="about" />
+      </section>
+      <section >
+        <CardGrid />
+      </section>
       <section id="trainings">
         <TrainingCards />
       </section>

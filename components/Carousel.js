@@ -1,8 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Box, Typography, Avatar } from '@mui/material';
 
@@ -56,8 +55,7 @@ const Carousel = () => {
       </Typography>
 
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        navigation
+        modules={[Pagination, Autoplay]} // Removed Navigation module
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
         loop
