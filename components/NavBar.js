@@ -22,21 +22,17 @@ const Navbar = () => {
 
   // Function to scroll to a section with smooth scrolling after a delay
   const scrollToSection = (id) => {
-    // Set a 1-second (1000ms) delay before performing the scroll action
     setTimeout(() => {
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    }, 10); // 1000ms delay
+    }, 10); // 10ms delay
   };
-
-
 
   // Menu items for navigation
   const menuItems = [
     { label: "Home", id: "home" },
-   
     { label: "Job Support", id: "job-support" },
     { label: "About", id: "about" },
     { label: "Trainings", id: "trainings" },
@@ -47,10 +43,28 @@ const Navbar = () => {
   return (
     <>
       <AppBar position="relative" sx={{ backgroundColor: "#000000" }}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: 100 }}>
-          {/* Logo Image */}
-          <IconButton>
-            <img src="/logo_2.png" alt="Logo" style={{ height: 100, width: 100 }} />
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: 100,
+          }}
+        >
+          {/* Responsive Logo */}
+          <IconButton
+            sx={{
+              p: 0, // Remove padding around the button
+            }}
+          >
+            <img
+              src="/logo.png"
+              alt="Logo"
+              style={{
+                height: isMobile ? "60px" : "100px", // Adjust height for mobile vs. desktop
+                width: "auto", // Maintain aspect ratio
+              }}
+            />
           </IconButton>
 
           {/* Mobile Menu */}
@@ -64,16 +78,26 @@ const Navbar = () => {
               >
                 <MenuIcon />
               </IconButton>
-              <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <Box sx={{ width: 250, display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
+              <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={() => setDrawerOpen(false)}
+              >
+                <Box
+                  sx={{
+                    width: 250,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    mt: 2,
+                  }}
+                >
                   <List>
                     {menuItems.map((item) => (
                       <ListItem key={item.id} disablePadding>
                         <ListItemButton
                           onClick={() => {
-                    
                             scrollToSection(item.id);
-                           
                           }}
                         >
                           <ListItemText
