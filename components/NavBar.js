@@ -48,23 +48,37 @@ const Navbar = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            height: 100,
+            height: 65,
           }}
         >
           {/* Responsive Logo */}
           <IconButton
             sx={{
               p: 0, // Remove padding around the button
+              display: "flex", // Use flexbox
+              flexDirection: "column", // Stack logo and text vertically
+              alignItems: "center", // Center align logo and text
             }}
           >
             <img
               src="/logo.png"
               alt="Logo"
               style={{
-                height: isMobile ? "60px" : "100px", // Adjust height for mobile vs. desktop
+                height: isMobile ? "40px" : "60px", // Adjust height for mobile vs. desktop
                 width: "auto", // Maintain aspect ratio
               }}
             />
+            <span
+              style={{
+                fontSize: "10px", // Smaller text size
+                fontWeight: 400, // Medium weight for readability
+                color: "#90caf9", // Match text color to your theme
+                marginTop: "-8px", // Add space between logo and text
+                fontFamily: "'Roboto', sans-serif", // Use a modern font
+              }}
+            >
+              IT Job Support
+            </span>
           </IconButton>
 
           {/* Mobile Menu */}
