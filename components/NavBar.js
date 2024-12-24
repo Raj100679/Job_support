@@ -64,21 +64,11 @@ const Navbar = () => {
               src="/logo.png"
               alt="Logo"
               style={{
-                height: isMobile ? "40px" : "60px", // Adjust height for mobile vs. desktop
+                height: isMobile ? "80px" : "100px",// Adjust height for mobile vs. desktop
                 width: "auto", // Maintain aspect ratio
               }}
             />
-            <span
-              style={{
-                fontSize: "10px", // Smaller text size
-                fontWeight: 400, // Medium weight for readability
-                color: "#90caf9", // Match text color to your theme
-                marginTop: "-8px", // Add space between logo and text
-                fontFamily: "'Roboto', sans-serif", // Use a modern font
-              }}
-            >
-              IT Job Support
-            </span>
+           
           </IconButton>
 
           {/* Mobile Menu */}

@@ -38,10 +38,10 @@ const RequestCallback = () => {
 
     emailjs
       .send(
-        "service_hia8lgn",
-        "template_l7xpipc",
+        "service_j7kd3qb",
+        "template_29b440r",
         formData,
-        "LnzEwREevqhszn4Sz" // Replace with your EmailJS user ID
+        "ckDJJDj5jdDaNSK-j" // Replace with your EmailJS user ID
       )
       .then(
         () => {
@@ -224,16 +224,21 @@ const RequestCallback = () => {
           Why Choose Us?
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  Upon receiving your inquiry, we will organize a call with one of our consultants, where you can share the details of your project.
+          ✅ Upon receiving your inquiry, we will organize a call with one of
+          our consultants, where you can share the details of your project.
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  If you feel assured and at ease with the consultant, you can proceed with the engagement.
+          ✅ If you feel assured and at ease with the consultant, you can
+          proceed with the engagement.
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  For any questions about our online technical job support, you can contact us at 917416255951.
+          ✅ For any questions about our online technical job support, you can
+          contact us at +91 7972989925.
         </Typography>
         <Typography variant="body1" sx={{ color: "#f5f5f5" }}>
-          ✅  Our usual working hours are Monday to Friday, but if needed, weekend support can be arranged based on the consultant's availability and your project deadlines.
+          ✅ Our usual working hours are Monday to Friday, but if needed,
+          weekend support can be arranged based on the consultant's availability
+          and your project deadlines.
         </Typography>
       </Box>
     </Box>

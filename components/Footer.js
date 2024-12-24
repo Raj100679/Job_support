@@ -278,7 +278,7 @@ const Footer = () => {
               mb={1}
             >
               <Mail sx={{ mr: 1, color: "#90caf9" }} />
-              <Typography variant="body2">hr@onlinejobsupport.org</Typography>
+              <Typography variant="body2">rasikagouraj135@gmail.com</Typography>
             </Box>
             <Box
               display="flex"
@@ -287,16 +287,16 @@ const Footer = () => {
               mb={1}
             >
               <Phone sx={{ mr: 1, color: "#90caf9" }} />
-              <Typography variant="body2">+91 7416255951</Typography>
+              <Typography variant="body2">+91 7972989925</Typography>
             </Box>
-            <Box
+            {/* <Box
               display="flex"
               alignItems="center"
               justifyContent={{ xs: "center", md: "flex-start" }}
             >
               <Phone sx={{ mr: 1, color: "#90caf9" }} />
               <Typography variant="body2">+91 7416255951</Typography>
-            </Box>
+            </Box> */}
           </Grid>
         </Grid>
       </Box>

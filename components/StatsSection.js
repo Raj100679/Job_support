@@ -25,7 +25,7 @@ const CardGrid = () => {
       title: "Countries Globally",
       value: "25",
       suffix: "+",
-      color: "#ff9800",
+      color: "#4caf50",
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ const CardGrid = () => {
       title: "Satisfied Customers",
       value: "100",
       suffix: "%",
-      color: "#e91e63",
+      color: "#2196f3",
     },
   ];
 

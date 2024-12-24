@@ -40,7 +40,7 @@ const HeroSection = () => {
     <Box
       sx={{
         position: "relative",
-        height: "70vh",
+        height: "45vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -48,11 +48,12 @@ const HeroSection = () => {
         textAlign: "center",
         backgroundImage: `url('hero.webp')`, // Replace with your image path
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        // backgroundPosition: "center",
+        backgroundPosition: "mid",
         backgroundRepeat: "no-repeat",
         overflow: "hidden", // Hide text outside bounds
         [theme.breakpoints.down("sm")]: {
-          height: "50vh", // Reduce height on small screens
+          height: "30vh", // Reduce height on small screens
         },
       }}
     >

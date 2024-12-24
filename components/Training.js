@@ -51,7 +51,12 @@ const TrainingCards = () => {
       });
     }
   };
-
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER; // Replace with your number
+  const message =
+    "Hello! I'm interested in learning more about your job support technology.";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    message
+  )}`;
   return (
     <Box sx={{ maxWidth: 1200, mx: "auto", my: 6, textAlign: "center" }}>
       {/* Heading */}
@@ -152,6 +157,7 @@ const TrainingCards = () => {
                 color="primary"
                 fullWidth
                 sx={{ mt: 2, borderRadius: 2 }}
+                onClick={() => window.open(whatsappLink, "_blank")}
               >
                 Register
               </Button>
